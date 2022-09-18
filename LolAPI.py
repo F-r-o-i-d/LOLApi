@@ -28,10 +28,10 @@ class LeagueOfLegendsCLIENT():
         self.TimeBeforeRespawnCoordinates = ((593, 1000),(631, 1024))
         self.ErrorCounter = 0
     
-        self.JungleSpots = {"Baron": ((1735,882),(1745, 892)),
-                            "Dragon": ((1820,986),(1830, 996)),
-                            "Blue": ((1712,925), (1721,933)),
-                            "Red": ((1690,919),(1698,930)),}
+        self.JungleSpots = {"Baron": ((1735,882),(1745, 892),(224,109,241)),
+                            "Dragon": ((1820,986),(1830, 996), (0,0,0)),
+                            "Blue": ((1712,925), (1721,933), (225,155,49)),
+                            "Red": ((1690,919),(1698,930), (225,155,49)),}
         
         self.JungleStatus = {"Baron": False,
                             "Dragon": False,
@@ -58,7 +58,7 @@ class LeagueOfLegendsCLIENT():
             #croppedImage = cv2.cvtColor(np.array(croppedImage),
             #                           cv2.COLOR_RGB2BGR)
             # check if the (225,155,49) is present in the image
-            if (225,155,49) in croppedImage:
+            if self.JungleSpots[spot][2] in croppedImage:
                 self.JungleStatus[spot] = True
             else:
                 self.JungleStatus[spot] = False
